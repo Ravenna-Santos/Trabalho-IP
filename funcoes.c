@@ -198,3 +198,69 @@ aluno *listar_alunos_cadastrados(aluno *alunos, int *qtde, int *capacidade) {
   }
   return alunos;
 }
+
+// Classifica alunos como aprovados ou reprovados
+// para aprovados reprovados retorna 1 para aprovados e 0 para reprovados
+
+int classificar_alunos(aluno aluno){
+  int aprovado = 1;
+  for(int i = 0; i < 7; i++){
+    if(aluno.notas[i] < 7.0){
+      aprovado = 0;
+      break;
+    }
+  }
+
+  return aprovado;
+}
+
+// Lista alunos aprovados
+aluno *listar_alunos_aprovados(aluno *alunos, int *qtde, int *capacidade) {
+  alunos = ler_alunos(alunos, qtde, capacidade);
+  aluno aluno;
+  int qtd_aprovados = 0;
+
+  if (*qtde == 0) {
+    printf("\nNão há alunos cadastrados!\n\n");
+  }
+  else {
+    for (int i = 0; i < *qtde; i++){
+      aluno = alunos[i];
+      if(classificar_alunos(aluno) == 1){
+        listar_aluno(aluno);
+        printf("\n");
+        qtd_aprovados++;
+      }
+    }
+    if(qtd_aprovados <= 0){
+      printf("\nNão há alunos aprovados!\n\n");
+    }
+  }
+  return alunos;
+}
+
+
+// Lista alunos aprovados
+aluno *listar_alunos_reprovados(aluno *alunos, int *qtde, int *capacidade) {
+  alunos = ler_alunos(alunos, qtde, capacidade);
+  aluno aluno;
+  int qtd_reprovados = 0;
+
+  if (*qtde == 0) {
+    printf("\nNão há alunos cadastrados!\n\n");
+  }
+  else {
+    for (int i = 0; i < *qtde; i++){
+      aluno = alunos[i];
+      if(classificar_alunos(aluno) == 0){
+        listar_aluno(aluno);
+        printf("\n");
+        qtd_reprovados++;
+      }
+    }
+    if(qtd_reprovados <= 0){
+      printf("\nNão há alunos reprovados!\n\n");
+    }
+  }
+  return alunos;
+}

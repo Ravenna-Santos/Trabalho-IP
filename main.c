@@ -45,12 +45,12 @@ int main() {
 
       case 4: {
         // Listar alunos aprovados
-        
+        alunos = listar_alunos_aprovados(alunos, &qtde, &capacidade);        
       } break;
 
       case 5: {
         // Listar alunos reprovados
-        
+        alunos = listar_alunos_reprovados(alunos, &qtde, &capacidade);        
       } break;
 
       case 0: {
