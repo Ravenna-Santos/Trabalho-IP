@@ -22,7 +22,7 @@ void cadastrar_aluno(aluno *alunos, int *qtde, int *capacidade) {
       "\nDigite novamente: ");
     scanf("%d", &novo_aluno.matricula);
   }
-  ler_alunos(alunos, qtde, capacidade);
+  alunos = ler_alunos(alunos, qtde, capacidade);
   int flag = 1;
   while (flag == 1) {
     int mat_igual = 0;
@@ -82,7 +82,7 @@ void adicionar_aluno(aluno aluno) {
 }
 
 // Lê o arquivo e armazena os dados em 'alunos'
-void ler_alunos(aluno *alunos, int *qtde, int *capacidade) {
+aluno *ler_alunos(aluno *alunos, int *qtde, int *capacidade) {
   FILE *arq;
   int i = 0;
   arq = fopen("alunos.txt", "r");
@@ -94,13 +94,14 @@ void ler_alunos(aluno *alunos, int *qtde, int *capacidade) {
     while(fscanf(arq, "%[^\n]%d\n%d\n%f %f %f %f %f %f %f\n%d %d %d %d %d %d %d\n", alunos[i].nome, &alunos[i].matricula, &alunos[i].codTurma, &alunos[i].notas[0], &alunos[i].notas[1], &alunos[i].notas[2], &alunos[i].notas[3], &alunos[i].notas[4], &alunos[i].notas[5], &alunos[i].notas[6], &alunos[i].faltas[0], &alunos[i].faltas[1], &alunos[i].faltas[2], &alunos[i].faltas[3], &alunos[i].faltas[4], &alunos[i].faltas[5], &alunos[i].faltas[6]) != EOF){
       i++;
       // Aumenta a capacidade de 'alunos' em 10 caso necessário
-      if (i == *capacidade) {
+      if (i >= *capacidade) {
         *capacidade += 10;
         alunos = realloc(alunos, *capacidade * sizeof(aluno));
       }
     }
   fclose(arq);
   *qtde = i;
+  return alunos;
   }
 }
 
@@ -115,7 +116,7 @@ void remover_aluno(aluno *alunos, int *qtde, int *capacidade) {
     scanf("%d", &matricula);
   }
   
-  ler_alunos(alunos, qtde, capacidade);
+  alunos = ler_alunos(alunos, qtde, capacidade);
   if (*qtde == 0) {
     printf("\nNão há alunos cadastrados!\n\n");
   }
@@ -165,8 +166,8 @@ void reescrever_alunos(aluno *alunos, int *qtde) {
 }
 
 // Listar alunos cadastrados
-void listar_alunos(aluno *alunos, int *qtde, int *capacidade) {
-  ler_alunos(alunos, qtde, capacidade);
+aluno *listar_alunos(aluno *alunos, int *qtde, int *capacidade) {
+  alunos = ler_alunos(alunos, qtde, capacidade);
   
   if (*qtde == 0) {
     printf("\nNão há alunos cadastrados!\n\n");
@@ -190,4 +191,5 @@ void listar_alunos(aluno *alunos, int *qtde, int *capacidade) {
     }
     printf("\n");
   }
+  return alunos;
 }

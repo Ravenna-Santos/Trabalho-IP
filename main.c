@@ -40,7 +40,7 @@ int main() {
 
       case 3: {
         // Listar alunos cadastrados
-        listar_alunos(alunos, &qtde, &capacidade);
+        alunos = listar_alunos(alunos, &qtde, &capacidade);
       } break;
 
       case 4: {
@@ -59,7 +59,7 @@ int main() {
         printf("\nDesenvolvido por:"
           "\n• José Matheus Nogueira Luciano"
           "\n• Ravenna Jesus dos Santos"
-          "\n• David Saymmon dos Santos Felipe");
+          "\n• David Saymmon dos Santos Felipe\n");
       } break;
       
       default: {
