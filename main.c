@@ -40,7 +40,7 @@ int main() {
 
       case 3: {
         // Listar alunos cadastrados
-        alunos = listar_alunos(alunos, &qtde, &capacidade);
+        alunos = listar_alunos_cadastrados(alunos, &qtde, &capacidade);
       } break;
 
       case 4: {
