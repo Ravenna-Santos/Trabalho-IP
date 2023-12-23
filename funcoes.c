@@ -165,31 +165,36 @@ void reescrever_alunos(aluno *alunos, int *qtde) {
   }
 }
 
+//lista um aluno específico
+void listar_aluno(aluno aluno){
+  printf("\nNome: %s"
+      "\nMatrícula: %d"
+      "\nCódigo da turma: %d", aluno.nome, aluno.matricula, aluno.codTurma);
+
+    printf("\nNotas: ");
+    for (int j = 0; j < 7; j++) {
+      printf(" %5.2f", aluno.notas[j]);
+    }
+
+    printf("\nFaltas:");
+    for (int j = 0; j < 7; j++) {
+      printf(" %5d", aluno.faltas[j]);
+    }
+    printf("\n");
+  }
+
 // Listar alunos cadastrados
-aluno *listar_alunos(aluno *alunos, int *qtde, int *capacidade) {
+aluno *listar_alunos_cadastrados(aluno *alunos, int *qtde, int *capacidade) {
   alunos = ler_alunos(alunos, qtde, capacidade);
-  
+
   if (*qtde == 0) {
     printf("\nNão há alunos cadastrados!\n\n");
   }
   else {
     for (int i = 0; i < *qtde; i++) {
-      printf("\nNome: %s"
-        "\nMatrícula: %d"
-        "\nCódigo da turma: %d", alunos[i].nome, alunos[i].matricula, alunos[i].codTurma);
-
-      printf("\nNotas: ");
-      for (int j = 0; j < 7; j++) {
-        printf(" %5.2f", alunos[i].notas[j]);
-      }
-      
-      printf("\nFaltas:");
-      for (int j = 0; j < 7; j++) {
-        printf(" %5d", alunos[i].faltas[j]);
-      }
+      listar_aluno(alunos[i]);
       printf("\n");
     }
-    printf("\n");
   }
   return alunos;
 }
