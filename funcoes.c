@@ -108,19 +108,19 @@ aluno *ler_alunos(aluno *alunos, int *qtde, int *capacidade) {
 // Remove o aluno a partir do numéro da matrícula
 void remover_aluno(aluno *alunos, int *qtde, int *capacidade) {
   int matricula, removido = 0;
-  
-  printf("\nDigite a matrícula do aluno que deseja remover: ");
-  scanf("%d", &matricula);
-  while (matricula / 100 != 20230) {
-    printf("Matrícula inválida! Digite novamente: ");
-    scanf("%d", &matricula);
-  }
-  
+    
   alunos = ler_alunos(alunos, qtde, capacidade);
   if (*qtde == 0) {
     printf("\nNão há alunos cadastrados!\n\n");
   }
   else {
+    printf("\nDigite a matrícula do aluno que deseja remover: ");
+    scanf("%d", &matricula);
+    while (matricula / 100 != 20230) {
+      printf("Matrícula inválida! Digite novamente: ");
+      scanf("%d", &matricula);
+    }
+    
     for (int i = 0; i < *qtde; i++) {
       if (alunos[i].matricula == matricula) {
         removido = 1;
