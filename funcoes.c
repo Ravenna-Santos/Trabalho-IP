@@ -51,6 +51,11 @@ void cadastrar_aluno(aluno *alunos, int *qtde, int *capacidade) {
   for (int i = 1; i <= 7; i++) {
     printf("Nota disciplina %d: ", i);
     scanf("%f", &novo_aluno.notas[i-1]);
+    while(novo_aluno.notas[i-1]<0 || novo_aluno.notas[i-1]>10)
+      {  
+        printf("Insira uma nota válida: ");
+        scanf("%f", &novo_aluno.notas[i-1]);
+      }
   }
 
   printf("\nFaltas do aluno\n");
