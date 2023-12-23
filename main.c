@@ -1,5 +1,5 @@
 #include "funcoes.h" // Inicializa a biblioteca funcoes.h
-const int MAX = 10;
+#define MAX 10;
 
 // variáveis globais
 aluno *alunos;
@@ -7,7 +7,7 @@ int qtde = 0;
 int capacidade = MAX;
 
 int main() {
-  alunos = malloc(MAX * sizeof(aluno)); // aloca espaço para 10 alunos
+  alunos = malloc(capacidade * sizeof(aluno)); // aloca espaço para 10 alunos
   int op;
 
   printf("BEM-VINDO AO SISTEMA DE GESTÃO DE ALUNOS!\n\n");
