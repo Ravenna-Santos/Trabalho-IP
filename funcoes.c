@@ -176,15 +176,15 @@ void listar_alunos(aluno *alunos, int *qtde, int *capacidade) {
       printf("\nNome: %s"
         "\nMatrícula: %d"
         "\nCódigo da turma: %d", alunos[i].nome, alunos[i].matricula, alunos[i].codTurma);
-      
+
       printf("\nNotas: ");
       for (int j = 0; j < 7; j++) {
-        printf(" %.2f", alunos[i].notas[j]);
+        printf(" %5.2f", alunos[i].notas[j]);
       }
       
       printf("\nFaltas:");
       for (int j = 0; j < 7; j++) {
-        printf(" %d", alunos[i].faltas[j]);
+        printf(" %5d", alunos[i].faltas[j]);
       }
       printf("\n");
     }
